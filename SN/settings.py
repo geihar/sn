@@ -43,13 +43,13 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 
 ]
 
@@ -84,6 +84,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SN.wsgi.application'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    ]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
