@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 django-environ = "*"
 psycopg2 = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"
