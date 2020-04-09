@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from PIL import Image
 
 
 class Profile(models.Model):
@@ -8,4 +9,13 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
 
     def __str__(self):
-        return 'Profile for user {}'.format(self.user.username)
+        return f'Profile for user {self.user.username}'
+
+    def save(self):
+        super().save()
+        photo = Image.open(self.photo.path)
+
+        if photo.height > 128 or photo.width > 128:
+            resize = (128, 128)
+            photo.thumbnail(resize)
+            photo.save(self.photo.path)
