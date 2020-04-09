@@ -17,6 +17,12 @@ env = environ.Env(
     DEBUG=(bool, False),
     SECRET_KEY=(str, 'my secret'),
     ALLOWED_HOSTS=(str, '*'),
+    SOCIAL_AUTH_FACEBOOK_KEY=(str, '*'),
+    SOCIAL_AUTH_FACEBOOK_SECRET=(str, '*'),
+    SOCIAL_AUTH_TWITTER_KEY=(str, '*'),
+    SOCIAL_AUTH_TWITTER_SECRET=(str, '*'),
+    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=(str, '*'),
+    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET=(str, '*'),
 
 
 )
@@ -87,6 +93,9 @@ WSGI_APPLICATION = 'SN.wsgi.application'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
     ]
 
 # Database
@@ -154,6 +163,14 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your_email@gmail.com'
 EMAIL_HOST_PASSWORD = 'your_pass'
+
+SOCIAL_AUTH_FACEBOOK_KEY = env('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET')
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_TWITTER_KEY = env('SOCIAL_AUTH_TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = env('SOCIAL_AUTH_TWITTER_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
 
 try:
