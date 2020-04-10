@@ -1,13 +1,13 @@
 (function(){
   var jquery_version = '3.3.1';
-  var site_url = 'https://3f6ad53c.ngrok.io/';
+  var site_url = 'https://77b81905.ngrok.io/';
   var static_url = site_url + 'static/';
   var min_width = 100;
   var min_height = 100;
 
   function bookmarklet(msg) {
     // load CSS
-    var css = $('<link>');
+    var css = jQuery('<link>');
     css.attr({
       rel: 'stylesheet',
       type: 'text/css',
@@ -16,8 +16,7 @@
     jQuery('head').append(css);
 
     // load HTML
-    box_html = '<div id="bookmarklet"><a href="#" id="close">&times;</a><h1>Select an image to bookmark:</h1>' +
-        '<div class="images"></div></div>';
+    box_html = '<div id="bookmarklet"><a href="#" id="close">&times;</a><h1>Select an image to bookmark:</h1><div class="images"></div></div>';
     jQuery('body').append(box_html);
 
     // close event
@@ -46,7 +45,7 @@
                   + encodeURIComponent(jQuery('title').text()),
                   '_blank');
     });
-  };
+  }
 
   // Check if jQuery is loaded
   if(typeof window.jQuery != 'undefined') {
