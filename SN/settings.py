@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import environ
+from django.urls import reverse_lazy
+
 
 env = environ.Env(
     DEBUG=(bool, False),
@@ -99,6 +101,9 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
     ]
 
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+    }
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
