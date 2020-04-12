@@ -49,7 +49,6 @@
     var csrftoken = Cookies.get('csrftoken');
     function csrfSafeMethod(method)
     {
-// Для этих методов токен не будет подставляться в заголовок.
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
     }
     $.ajaxSetup({
